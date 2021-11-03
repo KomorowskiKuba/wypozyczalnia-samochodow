@@ -1,4 +1,4 @@
-package com.project.carrental.model;
+package com.project.carrental.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

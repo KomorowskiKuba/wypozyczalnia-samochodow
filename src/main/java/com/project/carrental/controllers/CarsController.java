@@ -1,8 +1,8 @@
-package com.project.carrental.controller;
+package com.project.carrental.controllers;
 
-import com.project.carrental.exception.ResourceNotFoundException;
-import com.project.carrental.model.Car;
-import com.project.carrental.repository.CarsRepository;
+import com.project.carrental.exceptions.ResourceNotFoundException;
+import com.project.carrental.models.Car;
+import com.project.carrental.repositories.CarsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
