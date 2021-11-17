@@ -21,11 +21,11 @@ reportWebVitals();
 
 const inputs = [{
   name: "username",
-  placeHolder: "username",
+  placeholder: "username",
   type: "text"
 },{
   name: "password",
-  placeHolder: "password",
+  placeholder: "password",
   type: "password"
 },{
   type: "submit",

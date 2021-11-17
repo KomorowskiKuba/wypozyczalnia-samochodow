@@ -61,8 +61,8 @@ class Form extends Component {
 
     render() {
         const inputs = this.props.inputs.map(
-            ({name, placeHolder, type, value, className}, index) => (
-                <Input key = {index} name = {name} placeHolder = {placeHolder} type = {type} value = {value}
+            ({name, placeholder, type, value, className}, index) => (
+                <Input key = {index} name = {name} placeholder = {placeholder} type = {type} value = {value}
                 className = {type === 'submit'? className : ''} handleError = {this.handleError} />
             )
         )

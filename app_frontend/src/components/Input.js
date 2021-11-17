@@ -15,7 +15,7 @@ class Input extends Component {
         const {handleError, ...opts} = this.props
         this.handleError = handleError 
             return (
-                <input {...opts} value = {this.state.value}
+                <input {...opts}
                 onChange = {this.inputChange} className = {this.state.className} />
             )
         }
@@ -23,7 +23,7 @@ class Input extends Component {
 
     Input.propTypes = {
         name: PropTypes.string,
-        placeHolder: PropTypes.string,
+        placeholder: PropTypes.string,
         type: PropTypes.string,
         className: PropTypes.string,
         value: PropTypes.string,
