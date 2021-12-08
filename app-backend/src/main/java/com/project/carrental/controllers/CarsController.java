@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000/", maxAge = 3600)
 @RestController
 @RequestMapping("/carsapi")
 public class CarsController {
@@ -21,6 +21,7 @@ public class CarsController {
         return carsRepository.save(car);
     }
 
+    @CrossOrigin
     @GetMapping("/cars")
     public List<Car> getAllCars() {
         carsRepository.save(new Car(1, "Mercedes", "CLS 200", "Limousine", 5.0, 40, 300));
