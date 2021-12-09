@@ -17,6 +17,11 @@ public class AuthenticationController {
         this.userService = userService;
     }
 
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+
     @GetMapping("/sign-up")
     public String signUp(Model model) {
         model.addAttribute("user", new ApplicationUser());

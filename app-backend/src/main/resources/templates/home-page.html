@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <title> Samochody </title>
+  <link rel="stylesheet" th:href="@{/cars-table.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/basic-button.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/buttons-spreaded.css}" type="text/css">
+</head>
+<body>
+
+<h2> Dostępne samochody </h2>
+
+<div align="center">
+  <table id="cars">
+    <thead>
+    <tr>
+      <th> Marka </th>
+      <th> Model </th>
+      <th> Typ </th>
+      <th> Cena za dzień </th>
+      <th> Opcje </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${cars.empty}">
+      <td colspan="2"> No Books Available </td>
+    </tr>
+    <tr th:each="car : ${cars}">
+      <td><span th:text="${car.brand}"> Brand </span></td>
+      <td><span th:text="${car.model}"> Model </span></td>
+      <td><span th:text="${car.type}"> Type </span></td>
+      <td><span th:text="${car.pricePerDay}"> PricePerDay </span></td>
+      <td>
+        <div class="buttons">
+          <a href="#" class="basicButton">Wypożycz</a>
+          <a href="#" class="basicButton">Podgląd</a>
+          <a href="#" class="basicButton">Wypożycz</a>
+          <a href="#" class="basicButton">Podgląd</a>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+</body>
+</html>

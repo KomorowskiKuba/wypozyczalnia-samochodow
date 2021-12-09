@@ -1,0 +1,23 @@
+.basicButton {
+	box-shadow: 0px 10px 14px -7px #ff8c00;
+	background:linear-gradient(to bottom, #ff8c00 5%, #ff8c00 100%);
+	background-color:#ff8c00;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:11px 22px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ff8c00;
+}
+.basicButton:hover {
+	background:linear-gradient(to bottom, #ff8c00 5%, #ff8c00 100%);
+	background-color:#ff8c00;
+}
+.basicButton:active {
+	position:relative;
+	top:1px;
+}
