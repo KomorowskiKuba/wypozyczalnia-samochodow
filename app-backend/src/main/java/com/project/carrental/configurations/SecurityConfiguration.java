@@ -1,5 +1,6 @@
 package com.project.carrental.configurations;
 
+import com.project.carrental.controllers.UserController;
 import com.project.carrental.services.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,9 +23,11 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private UserDetailsServiceImpl userDetailsService;
+    private UserAuthenticationSuccessHandler userAuthenticationSuccessHandler;
 
-    public SecurityConfiguration(UserDetailsServiceImpl userDetailsService) {
+    public SecurityConfiguration(UserDetailsServiceImpl userDetailsService, UserAuthenticationSuccessHandler userAuthenticationSuccessHandler) {
         this.userDetailsService = userDetailsService;
+        this.userAuthenticationSuccessHandler = userAuthenticationSuccessHandler;
     }
 
     @Bean
@@ -40,6 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
+                //.successHandler(userAuthenticationSuccessHandler)
                 .defaultSuccessUrl("/carsapi/cars", true)
                 .permitAll()
                 .and()

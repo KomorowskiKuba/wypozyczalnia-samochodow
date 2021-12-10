@@ -16,7 +16,8 @@ public class Start {
 
         applicationUsersRepository.save(applicationUserAdmin);
 
-        ApplicationUser applicationUser = new ApplicationUser("user", passwordEncoder.encode("pass"), "ROLE_ADMIN");
+
+        ApplicationUser applicationUser = new ApplicationUser("user", passwordEncoder.encode("pass"), "ROLE_USER");
 
         applicationUsersRepository.save(applicationUser);
     }

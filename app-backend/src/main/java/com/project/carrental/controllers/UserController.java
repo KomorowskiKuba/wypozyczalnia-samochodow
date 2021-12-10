@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class AuthenticationController {
+public class UserController {
     private UserService userService;
 
-    public AuthenticationController(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping("/login")
+    @GetMapping("/home-page")
     public String login(Model model) {
         return "login";
     }
@@ -25,12 +25,12 @@ public class AuthenticationController {
     @GetMapping("/sign-up")
     public String signUp(Model model) {
         model.addAttribute("user", new ApplicationUser());
-        return "sign-up";
+        return "general/sign-up";
     }
 
     @PostMapping("/register")
     public String register(ApplicationUser applicationUser) {
         userService.addUser(applicationUser);
-        return "sign-up";
+        return "general/sign-up";
     }
 }
