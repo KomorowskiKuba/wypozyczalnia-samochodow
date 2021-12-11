@@ -45,10 +45,13 @@ public class CarsApiController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Car> getCarById(@PathVariable(name = "id") long carId) {
+    public String getCarById(@PathVariable(name = "id") long carId, Model model) {
         Car car = carsService.getCarById(carId);
 
-        return ResponseEntity.ok().body(car);
+        model.addAttribute("car", car);
+
+        //return ResponseEntity.ok().body(car);
+        return "user/car-details-page";
     }
 
     @PutMapping("/{id}")

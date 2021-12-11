@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <title> Samochody </title>
+
+    <link rel="stylesheet" th:href="@{/car-details-table.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/basic-button.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/buttons-spreaded.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/navigation-bar.css}" type="text/css">
+
+</head>
+<body>
+
+<header>
+    <img class="logo" th:src="@{/logo.svg}" alt="logo" width="5%" height="5%">
+
+    <nav>
+        <ul class="nav__links">
+            <li><a href="/cars/all"> Samochody </a></li>
+            <li><a href="#"> Moje konto </a></li>
+            <li><a href="#"> O nas </a></li>
+        </ul>
+    </nav>
+
+    <a class="cta" href="#" th:href="@{/logout}"><button> Wyloguj </button></a>
+</header>
+
+<div align="left" style="padding-left: 2%">
+    <h2 style="font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Samochód </h2>
+
+    <table id="car-details">
+        <thead>
+        <tr>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td>Brand</td>
+            <td><span th:text="${car.brand}"> Brand </span></td>
+        </tr>
+        <tr>
+            <td>Model</td>
+            <td><span th:text="${car.model}"> Model </span></td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td><span th:text="${car.type}"> Type </span></td>
+        </tr>
+        <tr>
+            <td>PricePerDay</td>
+            <td><span th:text="${car.pricePerDay}"> PricePerDay </span></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
