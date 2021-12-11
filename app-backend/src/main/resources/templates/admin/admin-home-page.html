@@ -1,17 +1,43 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
   <meta charset="utf-8">
   <title> Samochody </title>
+
   <link rel="stylesheet" th:href="@{/cars-table.css}" type="text/css">
   <link rel="stylesheet" th:href="@{/basic-button.css}" type="text/css">
   <link rel="stylesheet" th:href="@{/buttons-spreaded.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/navigation-bar.css}" type="text/css">
+
 </head>
 <body>
 
-<h2> Dostępne samochody </h2>
+<header>
+  <img class="logo" th:src="@{/logo.svg}" alt="logo" width="5%" height="5%">
+
+  <nav>
+    <ul class="nav__links">
+      <li><a href="/cars/all"> Samochody </a></li>
+      <li><a href="#"> Moje konto </a></li>
+      <li><a href="#"> O nas </a></li>
+    </ul>
+  </nav>
+
+  <a class="cta" href="#" th:href="@{/logout}"><button> Wyloguj </button></a>
+</header>
 
 <div align="center">
+  <table>
+    <tr>
+      <td class='bid-floor-col'>
+        <h2 style="display: inline-block; vertical-align: middle; font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Dostępne samochody </h2>
+        <a style="display: inline-block; vertical-align: middle; " href="#" class="basicButton" data-inline="true">+</a>
+      </td>
+    </tr>
+  </table>
+
+
   <table id="cars">
     <thead>
     <tr>
@@ -33,13 +59,14 @@
       <td><span th:text="${car.pricePerDay}"> PricePerDay </span></td>
       <td>
         <div class="buttons">
+          <a th:href="@{/cars/{id}(id=${car.id})}" class="basicButton">Podgląd</a>
+          <a href="#" class="basicButton">Edytuj</a>
+          <a href="#" class="basicButton">Usuń</a>
         </div>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
-
-
 </body>
 </html>

@@ -44,14 +44,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 //.successHandler(userAuthenticationSuccessHandler)
-                .defaultSuccessUrl("/carsapi/cars", true)
+                .defaultSuccessUrl("/cars/all", true)
                 .permitAll()
                 .and()
                 .httpBasic()
                 .and()
                 .csrf().disable()
                 .logout()
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/login")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID");
     }

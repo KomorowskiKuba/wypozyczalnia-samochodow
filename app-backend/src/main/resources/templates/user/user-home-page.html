@@ -1,60 +1,62 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:style="http://www.w3.org/1999/xhtml">
-<head>
-  <meta charset="utf-8">
-  <title> Samochody </title>
-  <link rel="stylesheet" th:href="@{/cars-table.css}" type="text/css">
-  <link rel="stylesheet" th:href="@{/basic-button.css}" type="text/css">
-  <link rel="stylesheet" th:href="@{/buttons-spreaded.css}" type="text/css">
-  <link rel="stylesheet" th:href="@{/navigation-bar.css}" type="text/css">
-</head>
-<body>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
-<header>
-  <img class="logo" th:src="@{/logo.svg}" alt="logo" width="5%" height="5%">
-  <nav>
-    <ul class="nav__links">
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Projects</a></li>
-      <li><a href="#">About</a></li>
-    </ul>
-  </nav>
-  <a class="cta" href="#"><button>Contact</button></a>
-</header>
+  <head>
+    <meta charset="utf-8">
+    <title> Samochody </title>
 
-<div align="center">
-  <h2 style="font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Dostępne samochody </h2>
+    <link rel="stylesheet" th:href="@{/cars-table.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/basic-button.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/buttons-spreaded.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/navigation-bar.css}" type="text/css">
 
-  <table id="cars">
-    <thead>
-    <tr>
-      <th> Marka </th>
-      <th> Model </th>
-      <th> Typ </th>
-      <th> Cena za dzień </th>
-      <th> Opcje </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:if="${cars.empty}">
-      <td colspan="2"> No Books Available </td>
-    </tr>
-    <tr th:each="car : ${cars}">
-      <td><span th:text="${car.brand}"> Brand </span></td>
-      <td><span th:text="${car.model}"> Model </span></td>
-      <td><span th:text="${car.type}"> Type </span></td>
-      <td><span th:text="${car.pricePerDay}"> PricePerDay </span></td>
-      <td>
-        <div class="buttons">
-          <a href="#" class="basicButton">Wypożycz</a>
-          <a href="#" class="basicButton">Podgląd</a>
-        </div>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+  </head>
+  <body>
 
+    <header>
+      <img class="logo" th:src="@{/logo.svg}" alt="logo" width="5%" height="5%">
 
-</body>
+      <nav>
+        <ul class="nav__links">
+          <li><a href="/cars/all"> Samochody </a></li>
+          <li><a href="#"> Moje konto </a></li>
+          <li><a href="#"> O nas </a></li>
+        </ul>
+      </nav>
+
+      <a class="cta" href="#" th:href="@{/logout}"><button> Wyloguj </button></a>
+    </header>
+
+    <div align="center">
+      <h2 style="font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Dostępne samochody </h2>
+
+      <table id="cars">
+        <thead>
+          <tr>
+            <th> Marka </th>
+            <th> Model </th>
+            <th> Typ </th>
+            <th> Cena za dzień </th>
+            <th> Opcje </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:if="${cars.empty}">
+            <td colspan="2"> No Books Available </td>
+          </tr>
+          <tr th:each="car : ${cars}">
+            <td><span th:text="${car.brand}"> Brand </span></td>
+            <td><span th:text="${car.model}"> Model </span></td>
+            <td><span th:text="${car.type}"> Type </span></td>
+            <td><span th:text="${car.pricePerDay}"> PricePerDay </span></td>
+            <td>
+              <div class="buttons">
+                <a th:href="@{/cars/{id}(id=${car.id})}" class="basicButton">Podgląd</a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
 </html>

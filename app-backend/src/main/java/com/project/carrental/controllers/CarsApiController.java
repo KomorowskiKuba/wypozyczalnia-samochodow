@@ -16,19 +16,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/carsapi")
+@RequestMapping("/cars")
 public class CarsApiController {
     @Autowired
     private CarsService carsService;
 
-    @PostMapping("/cars")
+    @PostMapping("/add")
     public ResponseEntity<?> createCar(@RequestBody Car car) {
         carsService.createCar(car);
 
         return new ResponseEntity<>(Car.class, HttpStatus.OK);
     }
 
-    @RequestMapping("/cars")
+    @RequestMapping("/all")
     public String getAllCars(Model model) {
         List<Car> cars =  carsService.getAllCars();
 
@@ -44,21 +44,21 @@ public class CarsApiController {
         }
     }
 
-    @GetMapping("cars/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable(name = "id") long carId) {
         Car car = carsService.getCarById(carId);
 
         return ResponseEntity.ok().body(car);
     }
 
-    @PutMapping("cars/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Car> updateCar(@PathVariable(name = "id") long carId, @RequestBody Car newCar) throws ResourceNotFoundException {
         Car car = carsService.updateCar(carId, newCar);
 
         return ResponseEntity.ok().body(car);
     }
 
-    @DeleteMapping("/cars/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteCar(@PathVariable(name = "id") long carId) throws ResourceNotFoundException {
         carsService.deleteCar(carId);
 
