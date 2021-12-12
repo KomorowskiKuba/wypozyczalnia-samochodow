@@ -28,12 +28,22 @@ public class UserController {
     @GetMapping("/sign-up")
     public String signUp(Model model) {
         model.addAttribute("user", new ApplicationUser());
+
         return "general/sign-up";
     }
 
     @PostMapping("/register")
     public String register(ApplicationUser applicationUser) {
         userService.addUser(applicationUser);
+
         return "general/login"; //TODO: FIX IT
+    }
+
+    @GetMapping("/my-account")
+    public String myAccount(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("user", auth.getPrincipal()); //TODO: wypadało by zabezpieczyć
+
+        return "general/account-page";
     }
 }
