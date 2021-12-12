@@ -2,29 +2,48 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Logowanie</title>
+
+    <link rel="stylesheet" th:href="@{/cars-table.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/basic-button.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/buttons-spreaded.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/navigation-bar.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/form.css}" type="text/css">
 </head>
+
 <body>
-<div>
-    <form name="f" th:action="@{/login}" method="post">
-        <fieldset>
-            <legend>Please login</legend>
-            <div th:if="${param.error}" class="alert alert-error">
-                Invalid username and password.
-            </div>
-            <div th:if="${param.logout}" class="alert alert-success">
-                You have been logged out.
-            </div>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username"/>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password"/>
-            <div class="form-actions">
-                <button type="submit" class="btn">
-                    <a href="http://localhost:8080/carsapi/cars">Log in</a>
-                </button>
-            </div>
-        </fieldset>
+
+<header>
+    <img class="logo" th:src="@{/logo.svg}" alt="logo" width="5%" height="5%">
+
+    <nav>
+        <ul class="nav__links">
+            <li><a href="#"> O nas </a></li>
+        </ul>
+    </nav>
+
+    <a class="cta" href="#" th:href="@{/sign-up}"><button> Zarejestruj się! </button></a>
+</header>
+
+<div align="center">
+    <h2 style="font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Logowanie </h2>
+
+    <form th:action="@{/login}" method="post">
+        <p><a> Nazwa użytkownika: </a></p>
+        <p style="margin-bottom: 10px"><input type="text" name="username"></p>
+
+        <p><a> Hasło: </a></p>
+        <p><input type="password" name="password"></p>
+
+        <div th:if="${param.error}" class="alert alert-error">
+            <p style="color:red;"> Niepoprawny login lub hasło! </p>
+        </div>
+        <div th:if="${param.logout}" class="alert alert-success">
+            <p style="color:red;"> Nastąpiło wylogowanie. </p>
+        </div>
+
+        <input type="submit" value="Zaloguj się!">
+
     </form>
 </div>
 </body>
