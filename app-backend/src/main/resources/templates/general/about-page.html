@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <title> Twoje konto </title>
+
+    <link rel="stylesheet" th:href="@{/cars-table.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/basic-button.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/buttons-spreaded.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/navigation-bar.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/form.css}" type="text/css">
+
+</head>
+<body>
+
+<header>
+    <img class="logo" th:src="@{/logo.svg}" alt="logo" width="5%" height="5%">
+
+    <nav>
+        <ul class="nav__links">
+            <li><a href="/cars/all"> Samochody </a></li>
+            <li><a href=/my-account> Moje konto </a></li>
+            <li><a href="#"> O nas </a></li>
+        </ul>
+    </nav>
+
+    <a class="cta" href="#" th:href="@{/login?logout}"><button> Wyloguj </button></a>
+</header>
+
+<div align="center">
+    <p><a> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus malesuada vitae ex non venenatis. Nunc nec hendrerit lorem. Phasellus blandit tincidunt odio, sit amet hendrerit massa suscipit id. Sed condimentum erat erat, ut tempus magna volutpat nec. Integer elementum eu risus sed rutrum. Nulla dapibus mollis mi, et rutrum massa luctus vel. Mauris vehicula a mauris sed mollis. Ut sem nibh, tincidunt vitae cursus non, porta id orci. Sed bibendum, metus in lobortis viverra, elit risus pellentesque dui, vel consectetur ligula turpis sit amet enim. Integer at auctor ipsum. Pellentesque vitae tempor diam. Donec ante sem, congue eget aliquam vitae, rhoncus non lacus. In euismod sapien nec molestie auctor. Etiam vitae tellus justo. Etiam magna metus, ultrices sit amet enim at, porta porttitor turpis.
+
+        Praesent nec tempor nisi. Ut iaculis quam dapibus facilisis lobortis. Integer id suscipit dolor. Aenean nec tortor vitae purus sagittis congue nec sit amet augue. Vivamus ac sem eget justo feugiat egestas vel quis sapien. Quisque dictum, elit at viverra rhoncus, mauris ante euismod nulla, nec fringilla odio tortor et neque. Phasellus tincidunt, leo vitae vestibulum mollis, enim libero tempor leo, facilisis laoreet lorem augue ac lectus. Sed in justo sapien.
+
+        Aliquam erat volutpat. Nullam vel mi nisl. Donec volutpat placerat tellus sed volutpat. Quisque consectetur nibh arcu, porttitor sollicitudin libero varius a. Nullam a ullamcorper massa. Quisque dignissim, felis id auctor gravida, diam tellus facilisis dolor, ac suscipit lacus mauris dictum felis. Aliquam erat volutpat. Aliquam erat volutpat. Quisque vitae felis sagittis nibh maximus blandit eu sit amet enim. Mauris fermentum sed ante sed ornare. Vestibulum sollicitudin aliquam orci et suscipit. Donec et mauris at odio malesuada congue. Aliquam bibendum enim non ipsum rhoncus maximus eget et erat. Proin ornare luctus leo vitae feugiat.
+    </a></p>
+
+</div>
+</body>
+</html>

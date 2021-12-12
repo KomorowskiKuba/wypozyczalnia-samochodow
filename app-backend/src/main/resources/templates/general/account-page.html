@@ -19,19 +19,30 @@
     <nav>
         <ul class="nav__links">
             <li><a href="/cars/all"> Samochody </a></li>
-            <li><a href=/"my-account"> Moje konto </a></li>
-            <li><a href="#"> O nas </a></li>
+            <li><a href=/my-account> Moje konto </a></li>
+            <li><a href="/about"> O nas </a></li>
         </ul>
     </nav>
 
     <a class="cta" href="#" th:href="@{/login?logout}"><button> Wyloguj </button></a>
 </header>
 
-<div align="left" style="padding-left: 2%">
-    <h2 style="font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Samochód </h2>
+<div align="center">
+    <h2 style="font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Twój profil </h2>
 
-    <p><a>Imię: <span th:text="${user.firstName}"></span></a> </p>
-    <p><a> Nazwisko: <span th:text="${user.lastName}"> </span></a> </p>
+    <img class="logo" th:src="@{/account-logo.svg}" alt="logo" width="10%" height="10%">
+
+    <p style="padding-top: 20px; padding-bottom: 10px;">
+        <a> Nazwa użytkownika: <span th:text="${user.username}"></span></a>
+    </p>
+
+    <p style="padding-bottom: 10px;">
+        <a> Imię: <span th:text="${user.firstName}"> </span></a>
+    </p>
+
+    <p style="padding-bottom: 10px;">
+        <a> Nazwisko: <span th:text="${user.lastName}"> </span></a>
+    </p>
 
 </div>
 </body>

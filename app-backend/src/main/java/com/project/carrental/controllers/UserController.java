@@ -46,4 +46,9 @@ public class UserController {
 
         return "general/account-page";
     }
+
+    @GetMapping("/about")
+    public String about() {
+        return "general/about-page";
+    }
 }
