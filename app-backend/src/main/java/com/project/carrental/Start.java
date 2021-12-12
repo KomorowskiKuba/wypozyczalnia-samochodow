@@ -12,12 +12,12 @@ public class Start {
     public Start(ApplicationUsersRepository applicationUsersRepository, PasswordEncoder passwordEncoder) {
         this.applicationUsersRepository = applicationUsersRepository;
 
-        ApplicationUser applicationUserAdmin = new ApplicationUser("admin", passwordEncoder.encode("pass"), "ROLE_ADMIN");
+        ApplicationUser applicationUserAdmin = new ApplicationUser("Marek", "Jankowski", "admin", passwordEncoder.encode("pass"), "ROLE_ADMIN");
 
         applicationUsersRepository.save(applicationUserAdmin);
 
 
-        ApplicationUser applicationUser = new ApplicationUser("user", passwordEncoder.encode("pass"), "ROLE_USER");
+        ApplicationUser applicationUser = new ApplicationUser("Marcin", "Kozak", "user", passwordEncoder.encode("pass"), "ROLE_USER");
 
         applicationUsersRepository.save(applicationUser);
     }

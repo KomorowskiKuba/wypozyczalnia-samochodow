@@ -34,6 +34,6 @@ public class UserController {
     @PostMapping("/register")
     public String register(ApplicationUser applicationUser) {
         userService.addUser(applicationUser);
-        return "general/sign-up";
+        return "general/login"; //TODO: FIX IT
     }
 }

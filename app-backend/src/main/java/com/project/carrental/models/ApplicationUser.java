@@ -22,13 +22,19 @@ public class ApplicationUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String firstName;
+
+    private String lastName;
+
     private String username;
 
     private String password;
 
     private String role;
 
-    public ApplicationUser(String username, String password, String role) {
+    public ApplicationUser(String firstName, String lastName, String username, String password, String role) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.role = role;

@@ -1,18 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title> Samochody </title>
+
+    <link rel="stylesheet" th:href="@{/cars-table.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/basic-button.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/buttons-spreaded.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/navigation-bar.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/form.css}" type="text/css">
+
 </head>
 <body>
-<h1>Register</h1>
-<form th:action="@{/register}" method="post">
-    Login:
-    <input type="text" name="username">
-    Password:
-    <input type="text" name="password">
-    <input type="submit" value="sing up!">
-</form>
+
+<header>
+    <img class="logo" th:src="@{/logo.svg}" alt="logo" width="5%" height="5%">
+
+    <nav>
+        <ul class="nav__links">
+            <li><a href="#"> O nas </a></li>
+        </ul>
+    </nav>
+
+    <a class="cta" href="#" th:href="@{/logout}"><button> Zaloguj się </button></a>
+</header>
+
+<div align="center">
+    <h2 style="font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Rejestracja </h2>
+
+    <form th:action="@{/register}" method="post">
+        <p><a> Imię: </a></p>
+        <p style="margin-bottom: 10px"><input type="text" name="firstName"></p>
+
+        <p><a> Nazwisko: </a></p>
+        <p style="margin-bottom: 10px"><input type="text" name="lastName"></p>
+
+        <p><a> Nazwa użytkownika: </a></p>
+        <p style="margin-bottom: 10px"><input type="text" name="username"></p>
+
+        <p><a> Hasło: </a></p>
+        <p><input type="password" name="password"></p>
+
+        <a th:href="@{/logout}">
+            <input type="submit" value="Zarejestruj się!">
+        </a>
+    </form>
+</div>
+
+
+
 
 </body>
 </html>
