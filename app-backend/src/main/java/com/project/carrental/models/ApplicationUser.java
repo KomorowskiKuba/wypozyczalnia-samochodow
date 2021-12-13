@@ -9,6 +9,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -22,19 +25,32 @@ public class ApplicationUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //@NotEmpty
+    //@Size(min = 1, max = 100)
     private String firstName;
 
+    //@NotEmpty
+    //@Size(min = 1, max = 100)
     private String lastName;
 
+    //@NotEmpty
+    //@Email
+    private String email;
+
+    //@NotEmpty
+    //@Size(min = 1, max = 20)
     private String username;
 
+    //@NotEmpty
+    //@Size(min = 8, max = 100)
     private String password;
 
     private String role;
 
-    public ApplicationUser(String firstName, String lastName, String username, String password, String role) {
+    public ApplicationUser(String firstName, String lastName, String email, String username, String password, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
         this.username = username;
         this.password = password;
         this.role = role;

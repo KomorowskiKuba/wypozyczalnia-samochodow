@@ -27,7 +27,14 @@ public class UserController {
 
     @GetMapping("/sign-up")
     public String signUp(Model model) {
-        model.addAttribute("user", new ApplicationUser());
+        model.addAttribute("user", new ApplicationUser(
+                "newUser",
+                "newUser",
+                "newUser@gmail.com",
+                "newUser",
+                "newUser",
+                "ROLE_USER"
+        ));
 
         return "general/sign-up";
     }
