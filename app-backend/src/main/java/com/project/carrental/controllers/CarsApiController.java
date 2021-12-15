@@ -61,10 +61,10 @@ public class CarsApiController {
         return ResponseEntity.ok().body(car);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteCar(@PathVariable(name = "id") long carId) throws ResourceNotFoundException {
+    @RequestMapping(value = "/delete/{id}", method = {RequestMethod.DELETE, RequestMethod.POST})
+    public String deleteCar(@PathVariable(name = "id") long carId) throws ResourceNotFoundException {
         carsService.deleteCar(carId);
 
-        return ResponseEntity.ok().build();
+        return "redirect:/cars/all";
     }
 }

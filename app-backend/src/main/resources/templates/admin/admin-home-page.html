@@ -60,7 +60,10 @@
         <div class="buttons">
           <a th:href="@{/cars/{id}(id=${car.id})}" class="basicButton">Podgląd</a>
           <a href="#" class="basicButton">Edytuj</a>
-          <a href="#" class="basicButton">Usuń</a>
+
+          <form th:action="@{/cars/delete/{id}(id=${car.id})}" th:method="delete">
+            <button type="submit" value="delete" class="basicButton">Usuń</button>
+          </form>
         </div>
       </td>
     </tr>
