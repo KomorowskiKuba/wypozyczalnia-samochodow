@@ -21,11 +21,20 @@ public class CarsApiController {
     @Autowired
     private CarsService carsService;
 
+    @GetMapping("/add")
+    public String createCarForm(Model model) {
+        Car car = new Car();
+
+        model.addAttribute("car", car);
+
+        return "admin/create-page";
+    }
+
     @PostMapping("/add")
-    public ResponseEntity<?> createCar(@RequestBody Car car) {
+    public String createCar(Car car) {
         carsService.createCar(car);
 
-        return new ResponseEntity<>(Car.class, HttpStatus.OK);
+        return "redirect:/cars/all";
     }
 
     @RequestMapping("/all")
@@ -54,11 +63,21 @@ public class CarsApiController {
         return "user/car-details-page";
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Car> updateCar(@PathVariable(name = "id") long carId, @RequestBody Car newCar) throws ResourceNotFoundException {
-        Car car = carsService.updateCar(carId, newCar);
+    @GetMapping("/edit/{id}")
+    public String getUpdateCarForm(@PathVariable(name = "id") long carId, Model model) {
+        Car car = carsService.getCarById(carId);
 
-        return ResponseEntity.ok().body(car);
+        model.addAttribute("car", car);
+
+        return "admin/edit-page";
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    public String submitUpdateCarForm(Car newCar) throws ResourceNotFoundException {
+        System.out.println(newCar.toString());
+        carsService.updateCar(newCar.getId(), newCar);
+
+        return "redirect:/cars/all";
     }
 
     @RequestMapping(value = "/delete/{id}", method = {RequestMethod.DELETE, RequestMethod.POST})
