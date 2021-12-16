@@ -3,6 +3,7 @@ package com.project.carrental.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,6 +17,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Data
+@ToString
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
@@ -46,6 +48,10 @@ public class ApplicationUser implements UserDetails {
     private String password;
 
     private String role;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "billingDetails_id", referencedColumnName = "id")
+    private BillingDetails billingDetails;
 
     public ApplicationUser(String firstName, String lastName, String email, String username, String password, String role) {
         this.firstName = firstName;

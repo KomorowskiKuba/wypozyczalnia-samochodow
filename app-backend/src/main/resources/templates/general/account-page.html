@@ -9,6 +9,8 @@
     <link rel="stylesheet" th:href="@{/basic-button.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/buttons-spreaded.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/navigation-bar.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/form.css}" type="text/css">
+
 
 </head>
 <body>
@@ -39,10 +41,23 @@
         <a> Imię: <span th:text="${user.firstName}"> </span></a>
     </p>
 
-    <p style="padding-bottom: 10px;">
+    <p style="margin-bottom: 20px;">
         <a> Nazwisko: <span th:text="${user.lastName}"> </span></a>
     </p>
 
+
+    <form th:action="@{/billing/edit/{id}(id=${billingDetails.id})}" th:method="post">
+        <p><a> cardNumber: </a></p>
+        <p style="margin-bottom: 10px;"><input type="text" name="cardNumber" th:field="${billingDetails.cardNumber}"></p>
+
+        <p><a> cardCVVCode: </a></p>
+        <p style="margin-bottom: 10px"><input type="text" name="cardCVVCode" th:field="${billingDetails.cardCVVCode}"></p>
+
+        <p><a> expirationDate: </a></p>
+        <p style="margin-bottom: 10px"><input type="text" name="expirationDate" th:field="${billingDetails.expirationDate}"></p>
+
+        <button type="submit" value="put" class="basicButton">Zapisz zmiany!</button>
+    </form>
 </div>
 </body>
 </html>

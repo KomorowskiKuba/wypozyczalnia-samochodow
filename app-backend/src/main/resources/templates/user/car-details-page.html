@@ -56,6 +56,13 @@
 
         </tbody>
     </table>
+
+    <form th:action="@{/cars/all}" th:method="get">
+        <p><a> cardNumber: </a></p>
+        <p style="margin-bottom: 10px;"><input type="text" name="cardNumber" th:field="${insurance.insuranceCode}"></p>
+
+        <button type="submit" value="put" class="basicButton">Zapisz zmiany!</button>
+    </form>
 </div>
 </body>
 </html>

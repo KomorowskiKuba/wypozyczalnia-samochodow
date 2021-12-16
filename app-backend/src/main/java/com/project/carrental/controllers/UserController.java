@@ -49,6 +49,9 @@ public class UserController {
     @GetMapping("/my-account")
     public String myAccount(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        ApplicationUser user = (ApplicationUser) auth.getPrincipal();
+
+        model.addAttribute("billingDetails", user.getBillingDetails());
         model.addAttribute("user", auth.getPrincipal()); //TODO: wypadało by zabezpieczyć
 
         return "general/account-page";

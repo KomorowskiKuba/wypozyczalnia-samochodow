@@ -58,6 +58,7 @@ public class CarsApiController {
         Car car = carsService.getCarById(carId);
 
         model.addAttribute("car", car);
+        model.addAttribute("insurance", car.getInsurance());
 
         //return ResponseEntity.ok().body(car);
         return "user/car-details-page";
@@ -74,7 +75,6 @@ public class CarsApiController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String submitUpdateCarForm(Car newCar) throws ResourceNotFoundException {
-        System.out.println(newCar.toString());
         carsService.updateCar(newCar.getId(), newCar);
 
         return "redirect:/cars/all";

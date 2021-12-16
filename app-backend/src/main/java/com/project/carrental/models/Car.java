@@ -34,4 +34,8 @@ public class Car {
 
     @NonNull
     private double pricePerDay;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "insurance_id", referencedColumnName = "id")
+    private Insurance insurance;
 }

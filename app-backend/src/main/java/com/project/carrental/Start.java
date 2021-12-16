@@ -1,6 +1,7 @@
 package com.project.carrental;
 
 import com.project.carrental.models.ApplicationUser;
+import com.project.carrental.models.BillingDetails;
 import com.project.carrental.repositories.ApplicationUsersRepository;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,7 +19,8 @@ public class Start {
 
 
         ApplicationUser applicationUser = new ApplicationUser("Marcin", "Kozak","1234@wp.pl", "user", passwordEncoder.encode("pass"), "ROLE_USER");
-
+        //TODO: FIX THIS SHIT - rekordu billingdetails nie ma w bazie wiec nie mozna go updateowac potem XDDDDDD
+        applicationUser.setBillingDetails(new BillingDetails(1L, "1234", "234", "xdd", applicationUser));
         applicationUsersRepository.save(applicationUser);
     }
 }
