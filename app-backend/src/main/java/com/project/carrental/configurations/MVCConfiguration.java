@@ -1,4 +1,4 @@
-package com.project.carrental.configurations;
+/*package com.project.carrental.configurations;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -11,4 +11,4 @@ public class MVCConfiguration implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
     }
-}
+}*/

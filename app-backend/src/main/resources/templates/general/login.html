@@ -22,13 +22,13 @@
         </ul>
     </nav>
 
-    <a class="cta" href="#" th:href="@{/sign-up}"><button> Zarejestruj się! </button></a>
+    <a class="cta" href="#" th:href="@{/sign-up-user}"><button> Zarejestruj się! </button></a>
 </header>
 
 <div align="center">
     <h2 style="font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Logowanie </h2>
 
-    <form th:action="@{/login}" method="post">
+    <form th:action="@{/login-user}" method="post">
         <p><a> Nazwa użytkownika: </a></p>
         <p style="margin-bottom: 10px"><input type="text" name="username"></p>
 

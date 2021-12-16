@@ -20,12 +20,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/login")
+    @GetMapping("/login-user")
     public String login(Model model) {
         return "general/login";
     }
 
-    @GetMapping("/sign-up")
+    @GetMapping("/sign-up-user")
     public String signUp(Model model) {
         model.addAttribute("user", new ApplicationUser(
                 "newUser",
@@ -39,7 +39,7 @@ public class UserController {
         return "general/sign-up";
     }
 
-    @PostMapping("/register")
+    @PostMapping("/register-user")
     public String register(ApplicationUser applicationUser) {
         userService.addUser(applicationUser);
 

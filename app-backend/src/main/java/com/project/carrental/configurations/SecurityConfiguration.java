@@ -39,13 +39,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/sign-up").permitAll()
+                .antMatchers("/sign-up-user").permitAll()
                 .and()
                 .authorizeRequests()
                 .antMatchers("/", "/home", "/js/**", "/css/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").permitAll()
+                .formLogin().loginPage("/login-user").permitAll()
                 //.successHandler(userAuthenticationSuccessHandler)
                 .defaultSuccessUrl("/cars/all", true)
                 .permitAll()
@@ -54,7 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .logout()
-                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/login-user")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID");
     }
