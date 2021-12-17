@@ -1,17 +1,17 @@
 package com.project.carrental.controllers;
 
 import com.google.gson.Gson;
+import com.project.carrental.models.ApplicationUser;
 import com.project.carrental.models.Car;
 import com.project.carrental.models.Rental;
 import com.project.carrental.services.CarsService;
 import com.project.carrental.services.RentalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Date;
@@ -62,10 +62,15 @@ public class RentalController {
         return "user/rental-page";
     }
 
-    @PostMapping("/rental/new")
+    @RequestMapping(value = "/rental/new", method = RequestMethod.POST)
     public String createRental(Rental rental) {
-        /*rentalService.createRental(rental);
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        ApplicationUser user = (ApplicationUser)principal;
 
+        rental.setApplicationUser(user);
+
+        rentalService.createRental(rental);
+/*
         Gson gson = new Gson();
         RestTemplate restTemplate = new RestTemplate();
         var headers = new HttpHeaders();

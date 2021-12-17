@@ -31,12 +31,12 @@
 <div align="center">
     <form th:action="@{/rental/new}" th:method="post">
         <p><a> Data początku wynajmu: </a></p>
-        <p style="margin-bottom: 10px;"><input type="date" name="rental.rentalBeginningDate"></p>
+        <p style="margin-bottom: 10px"><input type="date" name="rentalBeginningDate" th:field="${rental.rentalBeginningDate}"></p>
 
         <p><a> Data końca wynajmu: </a></p>
-        <p style="margin-bottom: 10px;"><input type="date" name="rental.rentalEndDate"></p>
+        <p style="margin-bottom: 10px"><input type="date" name="rentalEndDate" th:field="${rental.rentalEndDate}"></p>
 
-        <button type="submit" value="put" class="basicButton">Zapisz zmiany!</button>
+        <button type="submit" value="post" class="basicButton">Zapisz zmiany!</button>
     </form>
 </div>
 </body>

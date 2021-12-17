@@ -42,6 +42,7 @@
         <tr>
             <th> Data rozpoczęcia </th>
             <th> Data zakończenia </th>
+            <th> Username </th>
         </tr>
         </thead>
         <tbody>
@@ -51,6 +52,7 @@
         <tr th:each="rental : ${rentals}">
             <td><span th:text="${rental.rentalBeginningDate}"> rentalBeginningDate </span></td>
             <td><span th:text="${rental.rentalEndDate}"> rentalEndDate </span></td>
+            <td><span th:text="${rental.applicationUser.username}"> userName </span></td>
         </tr>
         </tbody>
     </table>
