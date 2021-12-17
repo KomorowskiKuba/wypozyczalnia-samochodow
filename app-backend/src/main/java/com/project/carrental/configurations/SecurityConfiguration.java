@@ -43,10 +43,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/", "/home", "/js/**", "/css/**").permitAll()
-                .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login-user").permitAll()
-                //.successHandler(userAuthenticationSuccessHandler)
                 .defaultSuccessUrl("/cars/all", true)
                 .permitAll()
                 .and()
@@ -57,6 +55,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login-user")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID");
+
     }
 
     @Override
