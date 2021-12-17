@@ -31,4 +31,9 @@ public class Rental {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Car car;
+
+    public Rental(Date rentalBeginningDate, Date rentalEndDate) {
+        this.rentalBeginningDate = rentalBeginningDate;
+        this.rentalEndDate = rentalEndDate;
+    }
 }

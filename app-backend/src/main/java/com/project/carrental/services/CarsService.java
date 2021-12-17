@@ -26,6 +26,7 @@ public class CarsService {
             carsRepository.save(new Car(3, "Skoda", "Fabia", "Limousine", 5.0, 40, 300, new Insurance(3L, "XD3"), false));
             carsRepository.save(new Car(4, "Skoda", "Octavia", "Limousine", 5.0, 40, 300, new Insurance(4L, "XD4"), false));
         }
+
         return carsRepository.findAll();
     }
 
@@ -51,5 +52,12 @@ public class CarsService {
     public void deleteCar(long carId) {
         carsRepository.findById(carId).orElseThrow(() -> new ResourceNotFoundException("Car not found:" + carId));
         carsRepository.deleteById(carId);
+    }
+
+    public void changeCarsAvailability(long carId, boolean isRented) {
+        Car car = carsRepository.findById(carId).orElseThrow(() -> new ResourceNotFoundException("Car not found:" + carId));
+        car.setRented(isRented);
+
+        carsRepository.save(car);
     }
 }

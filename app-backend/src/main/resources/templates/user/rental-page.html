@@ -29,9 +29,12 @@
 </header>
 
 <div align="center">
-    <form th:action="@{/cars/all}" th:method="get">
-        <p><a> date: </a></p>
-        <p style="margin-bottom: 10px;"><input type="date" name="cardNumber"></p>
+    <form th:action="@{/rental/new}" th:method="post">
+        <p><a> Data początku wynajmu: </a></p>
+        <p style="margin-bottom: 10px;"><input type="date" name="rental.rentalBeginningDate"></p>
+
+        <p><a> Data końca wynajmu: </a></p>
+        <p style="margin-bottom: 10px;"><input type="date" name="rental.rentalEndDate"></p>
 
         <button type="submit" value="put" class="basicButton">Zapisz zmiany!</button>
     </form>

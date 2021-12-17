@@ -32,7 +32,7 @@
         <tr>
             <td class='bid-floor-col'>
                 <h2 style="display: inline-block; vertical-align: middle; font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Samochód </h2>
-                <a style="display: inline-block; vertical-align: middle;" th:href="@{/rental/new}" class="basicButton" data-inline="true">Wypożycz</a>
+                <a style="display: inline-block; vertical-align: middle;" th:href="@{/rental/new/{id}(id=${car.id})}" class="basicButton" data-inline="true">Wypożycz</a>
 
             </td>
         </tr>
