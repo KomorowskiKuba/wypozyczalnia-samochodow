@@ -57,11 +57,18 @@ public class CarsApiController {
     public String getCarById(@PathVariable(name = "id") long carId, Model model) {
         Car car = carsService.getCarById(carId);
 
-        model.addAttribute("car", car);
-        model.addAttribute("insurance", car.getInsurance());
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String role = ((ApplicationUser)principal).getRole();
 
-        //return ResponseEntity.ok().body(car);
-        return "user/car-details-page";
+        model.addAttribute("car", car);
+
+        if (role == "ROLE_ADMIN") {
+            model.addAttribute("insurance", car.getInsurance());
+
+            return "admin/car-details-page-admin";
+        } else {
+            return "user/car-details-page";
+        }
     }
 
     @GetMapping("/edit/{id}")
