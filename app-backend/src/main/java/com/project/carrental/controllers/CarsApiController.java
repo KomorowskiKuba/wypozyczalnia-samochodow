@@ -79,7 +79,7 @@ public class CarsApiController {
 
             return "admin/car-details-page-admin";
         } else {
-            return "user/car-details-page";
+            return "user/car-details-page-user";
         }
     }
 

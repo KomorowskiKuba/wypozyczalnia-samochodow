@@ -27,14 +27,7 @@ public class UserController {
 
     @GetMapping("/sign-up-user")
     public String signUp(Model model) {
-        model.addAttribute("user", new ApplicationUser(
-                "newUser",
-                "newUser",
-                "newUser@gmail.com",
-                "newUser",
-                "newUser",
-                "ROLE_USER"
-        ));
+        model.addAttribute("user", new ApplicationUser());
 
         return "general/sign-up";
     }
@@ -43,7 +36,7 @@ public class UserController {
     public String register(ApplicationUser applicationUser) {
         userService.addUser(applicationUser);
 
-        return "general/login"; //TODO: FIX IT
+        return "general/login";
     }
 
     @GetMapping("/my-account")
@@ -52,9 +45,16 @@ public class UserController {
         ApplicationUser user = (ApplicationUser) auth.getPrincipal();
 
         model.addAttribute("billingDetails", user.getBillingDetails());
-        model.addAttribute("user", auth.getPrincipal()); //TODO: wypadało by zabezpieczyć
+        model.addAttribute("user", auth.getPrincipal());
 
-        return "general/account-page";
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String role = ((ApplicationUser)principal).getRole();
+
+        if (role == "ROLE_ADMIN") {
+            return "admin/admin-account-page";
+        } else {
+            return "user/user-account-page";
+        }
     }
 
     @GetMapping("/about")

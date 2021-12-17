@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> Samochody </title>
+    <title> Wypożyczenia </title>
 
     <link rel="stylesheet" th:href="@{/cars-table.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/basic-button.css}" type="text/css">
@@ -24,15 +24,14 @@
         </ul>
     </nav>
 
-    <a class="cta" href="#" th:href="@{/logout-user}"><button> Wyloguj </button></a>
+    <a class="cta" href="#" th:href="@{/login-user}"><button> Wyloguj </button></a>
 </header>
 
 <div align="center">
     <table>
         <tr>
             <td class='bid-floor-col'>
-                <h2 style="display: inline-block; vertical-align: middle; font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Dostępne samochody </h2>
-                <a style="display: inline-block; vertical-align: middle; " th:href="@{/cars/add}" class="basicButton" data-inline="true">+</a>
+                <h2 style="display: inline-block; vertical-align: middle; font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Wypożyczenia </h2>
             </td>
         </tr>
     </table>
@@ -47,11 +46,11 @@
         </thead>
         <tbody>
         <tr th:if="${rentals.empty}">
-            <td colspan="2"> No Books Available </td>
+            <td colspan="2"> No rentals Available </td>
         </tr>
         <tr th:each="rental : ${rentals}">
-            <td><span th:text="${rental.rentalBeginningDate}"> Brand </span></td>
-            <td><span th:text="${rental.rentalEndDate}"> Model </span></td>
+            <td><span th:text="${rental.rentalBeginningDate}"> rentalBeginningDate </span></td>
+            <td><span th:text="${rental.rentalEndDate}"> rentalEndDate </span></td>
         </tr>
         </tbody>
     </table>

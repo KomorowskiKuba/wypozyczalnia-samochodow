@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> Samochody </title>
+    <title> Dodawanie samochodu </title>
 
     <link rel="stylesheet" th:href="@{/car-details-table.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/basic-button.css}" type="text/css">
@@ -21,6 +21,7 @@
     <nav>
         <ul class="nav__links">
             <li><a href="/cars/all"> Samochody </a></li>
+            <li><a href="/rental/all"> Wypożyczenia </a></li>
             <li><a href="my-account"> Moje konto </a></li>
         </ul>
     </nav>
@@ -38,16 +39,16 @@
         <p><a> Model: </a></p>
         <p style="margin-bottom: 10px"><input type="text" name="model" th:field="${car.model}"></p>
 
-        <p><a> Type: </a></p>
+        <p><a> Typ: </a></p>
         <p style="margin-bottom: 10px"><input type="text" name="type" th:field="${car.type}"></p>
 
-        <p><a> engineCapacity: </a></p>
+        <p><a> Pojemność silnika: </a></p>
         <p style="margin-bottom: 10px"><input type="text" name="engineCapacity" th:field="${car.engineCapacity}"></p>
 
-        <p><a> pricePerHour: </a></p>
+        <p><a> Cena za godzinę: </a></p>
         <p style="margin-bottom: 10px"><input type="text" name="pricePerHour" th:field="${car.pricePerHour}"></p>
 
-        <p><a> pricePerDay: </a></p>
+        <p><a> Cena za dzień: </a></p>
         <p style="margin-bottom: 10px"><input type="text" name="pricePerDay" th:field="${car.pricePerDay}"></p>
 
         <button type="submit" value="put" class="basicButton">Zapisz zmiany!</button>

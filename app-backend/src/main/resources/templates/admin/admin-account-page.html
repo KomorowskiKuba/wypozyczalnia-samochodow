@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> Wypożyczanie </title>
+    <title> Twoje konto </title>
 
     <link rel="stylesheet" th:href="@{/cars-table.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/basic-button.css}" type="text/css">
@@ -21,23 +21,30 @@
     <nav>
         <ul class="nav__links">
             <li><a href="/cars/all"> Samochody </a></li>
+            <li><a href="/rental/all"> Wypożyczenia </a></li>
             <li><a href="/my-account"> Moje konto </a></li>
         </ul>
     </nav>
 
-    <a class="cta" href="#" th:href="@{/login?logout}"><button> Wyloguj </button></a>
+    <a class="cta" href="#" th:href="@{/login-user}"><button> Wyloguj </button></a>
 </header>
 
 <div align="center">
-    <form th:action="@{/rental/new}" th:method="post">
-        <p><a> Data początku wynajmu: </a></p>
-        <p style="margin-bottom: 10px;"><input type="date" name="rental.rentalBeginningDate"></p>
+    <h2 style="font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Twój profil </h2>
 
-        <p><a> Data końca wynajmu: </a></p>
-        <p style="margin-bottom: 10px;"><input type="date" name="rental.rentalEndDate"></p>
+    <img class="logo" th:src="@{/account-logo.svg}" alt="logo" width="10%" height="10%">
 
-        <button type="submit" value="put" class="basicButton">Zapisz zmiany!</button>
-    </form>
+    <p style="padding-top: 20px; padding-bottom: 10px;">
+        <a> Nazwa użytkownika: <span th:text="${user.username}"></span></a>
+    </p>
+
+    <p style="padding-bottom: 10px;">
+        <a> Imię: <span th:text="${user.firstName}"> </span></a>
+    </p>
+
+    <p style="margin-bottom: 20px;">
+        <a> Nazwisko: <span th:text="${user.lastName}"> </span></a>
+    </p>
 </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> Samochody </title>
+    <title> Szczegóły </title>
 
     <link rel="stylesheet" th:href="@{/car-details-table.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/basic-button.css}" type="text/css">
@@ -21,6 +21,7 @@
     <nav>
         <ul class="nav__links">
             <li><a href="/cars/all"> Samochody </a></li>
+            <li><a href="/rental/all"> Wypożyczenia </a></li>
             <li><a href="my-account"> Moje konto </a></li>
         </ul>
     </nav>
@@ -60,7 +61,7 @@
     </table>
 
     <form th:action="@{/cars/all}" th:method="get">
-        <p style="margin-top: 10px"><a> insuranceCode: </a></p>
+        <p style="margin-top: 10px"><a> Kod ubezpieczenia: </a></p>
         <p style="margin-bottom: 10px;"><input type="text" name="insuranceCode" th:field="${insurance.insuranceCode}"></p>
 
         <button type="submit" value="put" class="basicButton">Zapisz zmiany!</button>

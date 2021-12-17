@@ -25,7 +25,7 @@
         </ul>
     </nav>
 
-    <a class="cta" href="#" th:href="@{/login?logout}"><button> Wyloguj </button></a>
+    <a class="cta" href="#" th:href="@{/login-user}"><button> Wyloguj </button></a>
 </header>
 
 <div align="center">
@@ -47,13 +47,13 @@
 
 
     <form th:action="@{/billing/edit/{id}(id=${billingDetails.id})}" th:method="post">
-        <p><a> cardNumber: </a></p>
+        <p><a> Numer karty: </a></p>
         <p style="margin-bottom: 10px;"><input type="text" name="cardNumber" th:field="${billingDetails.cardNumber}"></p>
 
-        <p><a> cardCVVCode: </a></p>
+        <p><a> Kod CVV: </a></p>
         <p style="margin-bottom: 10px"><input type="text" name="cardCVVCode" th:field="${billingDetails.cardCVVCode}"></p>
 
-        <p><a> expirationDate: </a></p>
+        <p><a> Data wygaśnięcia karty: </a></p>
         <p style="margin-bottom: 10px"><input type="text" name="expirationDate" th:field="${billingDetails.expirationDate}"></p>
 
         <button type="submit" value="put" class="basicButton">Zapisz zmiany!</button>
