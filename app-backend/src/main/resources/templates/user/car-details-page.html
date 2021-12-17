@@ -27,7 +27,17 @@
 </header>
 
 <div align="left" style="padding-left: 2%">
-    <h2 style="font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Samochód </h2>
+
+    <table>
+        <tr>
+            <td class='bid-floor-col'>
+                <h2 style="display: inline-block; vertical-align: middle; font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Samochód </h2>
+                <a style="display: inline-block; vertical-align: middle;" th:href="@{/rental/new}" class="basicButton" data-inline="true">Wypożycz</a>
+
+            </td>
+        </tr>
+    </table>
+
 
     <table id="car-details">
         <thead>
@@ -56,6 +66,7 @@
 
         </tbody>
     </table>
+
 </div>
 </body>
 </html>

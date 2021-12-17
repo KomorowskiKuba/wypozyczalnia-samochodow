@@ -15,6 +15,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Data
 @ToString
@@ -52,6 +53,9 @@ public class ApplicationUser implements UserDetails {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "billingDetails_id", referencedColumnName = "id")
     private BillingDetails billingDetails;
+
+    @OneToMany(mappedBy = "applicationUser")
+    private List<Rental> rentalList;
 
     public ApplicationUser(String firstName, String lastName, String email, String username, String password, String role) {
         this.firstName = firstName;

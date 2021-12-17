@@ -1,14 +1,22 @@
 package com.project.carrental.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+
+import javax.persistence.*;
 import java.util.Date;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Rental {
 
     @Id
-    private int rentalId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private Date rentalBeginningDate;
 
@@ -16,5 +24,11 @@ public class Rental {
 
     //private Location pickUpLocation;
 
+    @ManyToOne
+    @JoinColumn(name = "applicationUser_id")
     private ApplicationUser applicationUser;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id", referencedColumnName = "id")
+    private Car car;
 }

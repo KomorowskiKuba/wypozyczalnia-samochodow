@@ -38,4 +38,9 @@ public class Car {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "insurance_id", referencedColumnName = "id")
     private Insurance insurance;
+
+    private boolean isRented = false;
+
+    //@OneToOne(mappedBy = "car")
+    //private Rental rental;
 }

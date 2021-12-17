@@ -21,10 +21,10 @@ public class CarsService {
 
     public List<Car> getAllCars() {
         if (carsRepository.findAll().size() == 0) {
-            carsRepository.save(new Car(1, "Mercedes", "CLS 200", "Limousine", 5.0, 40, 300, new Insurance(1L, "XD1")));
-            carsRepository.save(new Car(2, "BMW", "e 43", "Limousine", 5.0, 40, 300, new Insurance(2L, "XD2")));
-            carsRepository.save(new Car(3, "Skoda", "Fabia", "Limousine", 5.0, 40, 300, new Insurance(3L, "XD3")));
-            carsRepository.save(new Car(4, "Skoda", "Octavia", "Limousine", 5.0, 40, 300, new Insurance(4L, "XD4")));
+            carsRepository.save(new Car(1, "Mercedes", "CLS 200", "Limousine", 5.0, 40, 300, new Insurance(1L, "XD1"), false));
+            carsRepository.save(new Car(2, "BMW", "e 43", "Limousine", 5.0, 40, 300, new Insurance(2L, "XD2"), false));
+            carsRepository.save(new Car(3, "Skoda", "Fabia", "Limousine", 5.0, 40, 300, new Insurance(3L, "XD3"), false));
+            carsRepository.save(new Car(4, "Skoda", "Octavia", "Limousine", 5.0, 40, 300, new Insurance(4L, "XD4"), false));
         }
         return carsRepository.findAll();
     }
