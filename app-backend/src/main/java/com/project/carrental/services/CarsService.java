@@ -30,6 +30,10 @@ public class CarsService {
         return carsRepository.findAll();
     }
 
+    public List<Car> getAllByBrandAndModel(String brand, String model) {
+        return carsRepository.findByBrandAndModel(brand, model);
+    }
+
     public Car getCarById(long carId) {
         return carsRepository.findById(carId).orElseThrow(() -> new ResourceNotFoundException("Car not found:" + carId));
     }

@@ -1,0 +1,30 @@
+input, select, textarea {
+    color: white;
+}
+
+input[type=text], input[type=password], select {
+  width: 90%;
+  display: inline-block;
+  padding: 8px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  vertical-align:middle;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  width: 60%;
+  background-color: #FF8B00;
+  color: white;
+  margin: 1px 1px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  vertical-align:middle;
+}
+
+/* Add a background color to the submit button on mouse-over */
+input[type=submit]:hover {
+  background-color: #FF8B00;
+}

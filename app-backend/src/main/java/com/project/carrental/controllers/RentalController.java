@@ -46,8 +46,8 @@ public class RentalController {
     @GetMapping("/rental/new/{id}")
     public String getCreateRentalForm(Model model, @PathVariable(name = "id") Long id) {
         Rental rental = new Rental();
-
-       /* HttpHeaders headers = new HttpHeaders();
+//
+        /*HttpHeaders headers = new HttpHeaders();
         headers.setBasicAuth("user", "pass");
 
         RestTemplate restTemplate = new RestTemplate();
@@ -55,8 +55,8 @@ public class RentalController {
 
         ResponseEntity<Car> response = new RestTemplate().exchange("http://localhost:8080/cars/car/" + id, HttpMethod.GET, request, Car.class);
 
-        System.out.println(response.getBody());*/
-
+        System.out.println(response.getBody().getModel());*/
+//
         model.addAttribute("rental", rental);
 
         return "user/rental-page";

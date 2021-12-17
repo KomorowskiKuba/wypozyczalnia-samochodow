@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @ToString
@@ -27,7 +24,7 @@ public class Insurance {
 
     private Double costPerDay;
 
-    @OneToOne(mappedBy = "insurance")
+    @OneToOne(mappedBy = "insurance", fetch = FetchType.EAGER)
     private Car car;
 
     public Insurance(Long id, String insuranceCode) {

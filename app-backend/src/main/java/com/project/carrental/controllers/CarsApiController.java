@@ -39,6 +39,31 @@ public class CarsApiController {
         return "redirect:/cars/all";
     }
 
+    @PostMapping("/all")
+    public String filter(String brand, String model) {
+
+        return "";
+    }
+
+    @GetMapping("/all/brandandmodel")
+    public String getAllCarsBrandAndModel(Model model, @RequestParam String brand, @RequestParam String carModel) {
+        List<Car> cars =  carsService.getAllByBrandAndModel(brand, carModel);
+
+        System.out.println(cars.size());
+
+        //Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        //String role = ((ApplicationUser)principal).getRole();
+
+        model.addAttribute("cars", cars);
+
+        //if (role == "ROLE_ADMIN") {
+       //     return "admin/admin-home-page";
+       // } else {
+            return "user/user-home-page";
+        //}
+    }
+
+
     @RequestMapping("/all")
     public String getAllCars(Model model) {
         List<Car> cars =  carsService.getAllCars();
@@ -56,11 +81,9 @@ public class CarsApiController {
     }
 
     @GetMapping("/car/{id}")
-    public String getCar(@PathVariable(name = "id") long carId) {
-
+    public ResponseEntity<Car> getCar(@PathVariable(name = "id") long carId) {
         System.out.println(carsService.getCarById(carId).getModel());
-        Gson gson = new Gson();
-        return gson.toJson(carsService.getCarById(carId));
+        return ResponseEntity.ok().body(carsService.getCarById(carId));
     }
 
     @GetMapping("/{id}")

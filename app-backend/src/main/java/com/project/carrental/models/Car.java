@@ -33,7 +33,7 @@ public class Car {
     @NonNull
     private double pricePerDay;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "insurance_id", referencedColumnName = "id")
     private Insurance insurance;
 
