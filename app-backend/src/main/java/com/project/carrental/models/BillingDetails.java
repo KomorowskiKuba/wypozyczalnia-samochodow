@@ -16,6 +16,7 @@ import java.io.Serializable;
 @Table(name = "billingDetails")
 public class BillingDetails implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String cardNumber;

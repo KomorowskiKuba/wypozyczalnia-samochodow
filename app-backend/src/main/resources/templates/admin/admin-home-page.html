@@ -9,6 +9,8 @@
   <link rel="stylesheet" th:href="@{/basic-button.css}" type="text/css">
   <link rel="stylesheet" th:href="@{/buttons-spreaded.css}" type="text/css">
   <link rel="stylesheet" th:href="@{/navigation-bar.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/vertical-form.css}" type="text/css">
+
 
 </head>
 <body>
@@ -31,12 +33,24 @@
   <table>
     <tr>
       <td class='bid-floor-col'>
-        <h2 style="display: inline-block; vertical-align: middle; font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Dostępne samochody </h2>
+        <h2 style="display: inline-block; vertical-align: middle; font-family:Arial; padding: 20px; color: white; font-size: 22px;"> Wszystkie samochody </h2>
         <a style="display: inline-block; vertical-align: middle; " th:href="@{/cars/add}" class="basicButton" data-inline="true">+</a>
       </td>
     </tr>
   </table>
 
+  <div class="buttons" style="width: 25%;">
+    <form th:action="@{/cars/all/brandandmodel}" th:method="get" style="display: inline;">
+
+      <a style="vertical-align:middle; font-size: 20px;"> Marka: </a>
+      <p style="margin-bottom: 5px; display: inline;"><input type="text" th:name="brand"></p>
+
+      <a style="vertical-align:middle; font-size: 20px;"> Model: </a>
+      <p style="margin-bottom: 5px; display: inline; "><input type="text" th:name="carModel"></p>
+
+      <p><button style="vertical-align:middle; margin-bottom: 10px; margin-top:10px; display: inline-block;" type="submit" value="put" class="basicButton">Szukaj</button></p>
+    </form>
+  </div>
 
   <table id="cars">
     <thead>
@@ -45,18 +59,20 @@
       <th> Model </th>
       <th> Typ </th>
       <th> Cena za dzień </th>
+      <th> Wypożyczony </th>
       <th> Opcje </th>
     </tr>
     </thead>
     <tbody>
     <tr th:if="${cars.empty}">
-      <td colspan="2"> No Books Available </td>
+      <td colspan="5"> Brak dostępnych samochodów </td>
     </tr>
     <tr th:each="car : ${cars}">
       <td><span th:text="${car.brand}"> Brand </span></td>
       <td><span th:text="${car.model}"> Model </span></td>
       <td><span th:text="${car.type}"> Type </span></td>
       <td><span th:text="${car.pricePerDay}"> PricePerDay </span></td>
+      <td><span th:text="${car.isRented}"> IsRented </span></td>
       <td>
         <div class="buttons">
           <a th:href="@{/cars/{id}(id=${car.id})}" class="basicButton">Podgląd</a>

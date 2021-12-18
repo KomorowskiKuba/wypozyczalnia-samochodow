@@ -41,7 +41,7 @@
         <tbody>
 
         <tr>
-            <td>Brand</td>
+            <td>Marka</td>
             <td><span th:text="${car.brand}"> Brand </span></td>
         </tr>
         <tr>
@@ -49,12 +49,36 @@
             <td><span th:text="${car.model}"> Model </span></td>
         </tr>
         <tr>
-            <td>Type</td>
+            <td>Typ</td>
             <td><span th:text="${car.type}"> Type </span></td>
         </tr>
         <tr>
-            <td>PricePerDay</td>
-            <td><span th:text="${car.pricePerDay}"> PricePerDay </span></td>
+            <td>Cena za godzinę</td>
+            <td><span th:text="${car.pricePerHour}"> pricePerHour </span></td>
+        </tr>
+        <tr>
+            <td>Cena za dzień</td>
+            <td><span th:text="${car.pricePerDay}"> pricePerDay </span></td>
+        </tr>
+        <tr>
+            <td>Ilość drzwi</td>
+            <td><span th:text="${car.amountOfDoors}"> amountOfDoors </span></td>
+        </tr>
+        <tr>
+            <td>Rok produkcji</td>
+            <td><span th:text="${car.productionYear}"> productionYear </span></td>
+        </tr>
+        <tr>
+            <td>Kolor</td>
+            <td><span th:text="${car.color}"> color </span></td>
+        </tr>
+        <tr>
+            <td>Pojemność silnika</td>
+            <td><span th:text="${car.engineCapacity}"> engineCapacity </span></td>
+        </tr>
+        <tr>
+            <td>Moc silnika</td>
+            <td><span th:text="${car.horsePower}"> horsePower </span></td>
         </tr>
 
         </tbody>
@@ -63,6 +87,12 @@
     <form th:action="@{/cars/all}" th:method="get">
         <p style="margin-top: 10px"><a> Kod ubezpieczenia: </a></p>
         <p style="margin-bottom: 10px;"><input type="text" name="insuranceCode" th:field="${insurance.insuranceCode}"></p>
+
+        <p style="margin-top: 10px"><a> Nazwa ubezpieczenia: </a></p>
+        <p style="margin-bottom: 10px;"><input type="text" name="insuranceName" th:field="${insurance.insuranceName}"></p>
+
+        <p style="margin-top: 10px"><a> Dzienny koszt ubezpieczenia: </a></p>
+        <p style="margin-bottom: 10px;"><input type="text" name="costPerDay" th:field="${insurance.costPerDay}"></p>
 
         <button type="submit" value="put" class="basicButton">Zapisz zmiany!</button>
     </form>

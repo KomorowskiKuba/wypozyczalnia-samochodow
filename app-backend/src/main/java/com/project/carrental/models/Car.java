@@ -22,7 +22,7 @@ public class Car {
     private String model;
 
     @NonNull
-    private String type; //TODO: Change to enum
+    private String type;
 
     @NonNull
     private double engineCapacity;
@@ -32,6 +32,18 @@ public class Car {
 
     @NonNull
     private double pricePerDay;
+
+    @NonNull
+    private int amountOfDoors;
+
+    @NonNull
+    private int productionYear;
+
+    @NonNull
+    private String color;
+
+    @NonNull
+    private int horsePower;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "insurance_id", referencedColumnName = "id")

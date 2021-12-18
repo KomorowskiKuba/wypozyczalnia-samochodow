@@ -19,8 +19,7 @@ public class Start {
 
 
         ApplicationUser applicationUser = new ApplicationUser("Marcin", "Kozak","1234@wp.pl", "user", passwordEncoder.encode("pass"), "ROLE_USER");
-        //TODO: FIX THIS SHIT - rekordu billingdetails nie ma w bazie wiec nie mozna go updateowac potem XDDDDDD
-        applicationUser.setBillingDetails(new BillingDetails(1L, "1234", "234", "xdd", applicationUser));
+        applicationUser.setBillingDetails(new BillingDetails());
         applicationUsersRepository.save(applicationUser);
     }
 }

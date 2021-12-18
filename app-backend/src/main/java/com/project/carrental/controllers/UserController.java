@@ -1,6 +1,7 @@
 package com.project.carrental.controllers;
 
 import com.project.carrental.models.ApplicationUser;
+import com.project.carrental.models.BillingDetails;
 import com.project.carrental.services.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,6 +35,7 @@ public class UserController {
 
     @PostMapping("/register-user")
     public String register(ApplicationUser applicationUser) {
+        applicationUser.setBillingDetails(new BillingDetails());
         userService.addUser(applicationUser);
 
         return "general/login";

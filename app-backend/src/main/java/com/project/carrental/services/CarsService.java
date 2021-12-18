@@ -21,10 +21,12 @@ public class CarsService {
 
     public List<Car> getAllCars() {
         if (carsRepository.findAll().size() == 0) {
-            carsRepository.save(new Car(1, "Mercedes", "CLS 200", "Limousine", 5.0, 40, 300, new Insurance(1L, "XD1"), false));
-            carsRepository.save(new Car(2, "BMW", "e 43", "Limousine", 5.0, 40, 300, new Insurance(2L, "XD2"), false));
-            carsRepository.save(new Car(3, "Skoda", "Fabia", "Limousine", 5.0, 40, 300, new Insurance(3L, "XD3"), false));
-            carsRepository.save(new Car(4, "Skoda", "Octavia", "Limousine", 5.0, 40, 300, new Insurance(4L, "XD4"), false));
+            carsRepository.save(new Car(1, "Mercedes", "CLS 200", "Limousine", 5.0, 100.0, 300.0, 5, 2019, "Biały", 250, new Insurance("1234", "PZU", 100.0) ,true));
+            carsRepository.save(new Car(2, "BMW", "E43", "Limousine", 4.0, 80, 400.0, 5, 2018, "Czerwony", 180, new Insurance("1235", "PZU", 80.0) ,false));
+            carsRepository.save(new Car(3, "Skoda", "Fabia", "Limousine", 2.0, 40, 200.0, 5, 2013, "Czerwony", 90, new Insurance("1236", "AXA", 40.0) ,false));
+            carsRepository.save(new Car(4, "Skoda", "Octavia", "Limousine", 1.8, 30, 200.0, 5, 2009, "Czerwony", 75, new Insurance("1237", "AXA", 30.0) ,false));
+            carsRepository.save(new Car(5, "Skoda", "Fabia", "Hatchback", 1.8, 30, 350.0, 5, 2009, "Zielony", 75, new Insurance("1237", "AXA", 30.0) ,false));
+
         }
 
         return carsRepository.findAll();

@@ -16,6 +16,7 @@ import javax.persistence.*;
 public class Insurance {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String insuranceCode;
@@ -27,8 +28,9 @@ public class Insurance {
     @OneToOne(mappedBy = "insurance", fetch = FetchType.EAGER)
     private Car car;
 
-    public Insurance(Long id, String insuranceCode) {
-        this.id = id;
+    public Insurance(String insuranceCode, String insuranceName, Double costPerDay) {
         this.insuranceCode = insuranceCode;
+        this.insuranceName = insuranceName;
+        this.costPerDay = costPerDay;
     }
 }

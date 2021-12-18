@@ -48,19 +48,16 @@ public class CarsApiController {
     @GetMapping("/all/brandandmodel")
     public String getAllCarsBrandAndModel(Model model, @RequestParam String brand, @RequestParam String carModel) {
         List<Car> cars =  carsService.getAllByBrandAndModel(brand, carModel);
-
-        System.out.println(cars.size());
-
-        //Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        //String role = ((ApplicationUser)principal).getRole();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String role = ((ApplicationUser)principal).getRole();
 
         model.addAttribute("cars", cars);
 
-        //if (role == "ROLE_ADMIN") {
-       //     return "admin/admin-home-page";
-       // } else {
+        if (role == "ROLE_ADMIN") {
+            return "admin/admin-home-page";
+        } else {
             return "user/user-home-page";
-        //}
+        }
     }
 
 
