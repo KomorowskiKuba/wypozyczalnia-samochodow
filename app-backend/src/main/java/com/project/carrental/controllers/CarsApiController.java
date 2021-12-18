@@ -39,12 +39,6 @@ public class CarsApiController {
         return "redirect:/cars/all";
     }
 
-    @PostMapping("/all")
-    public String filter(String brand, String model) {
-
-        return "";
-    }
-
     @GetMapping("/all/brandandmodel")
     public String getAllCarsBrandAndModel(Model model, @RequestParam String brand, @RequestParam String carModel) {
         List<Car> cars =  carsService.getAllByBrandAndModel(brand, carModel);
@@ -79,8 +73,10 @@ public class CarsApiController {
 
     @GetMapping("/car/{id}")
     public ResponseEntity<Car> getCar(@PathVariable(name = "id") long carId) {
-        System.out.println(carsService.getCarById(carId).getModel());
-        return ResponseEntity.ok().body(carsService.getCarById(carId));
+        Car car = carsService.getCarById(carId);
+        car.setInsurance(null);
+
+        return ResponseEntity.ok().body(car);
     }
 
     @GetMapping("/{id}")
@@ -92,7 +88,6 @@ public class CarsApiController {
 
         model.addAttribute("car", car);
 
-        System.out.println(car.getId() + " " + car.isRented());
 
         if (role == "ROLE_ADMIN") {
             model.addAttribute("insurance", car.getInsurance());
@@ -115,6 +110,13 @@ public class CarsApiController {
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String submitUpdateCarForm(Car newCar) throws ResourceNotFoundException {
         carsService.updateCar(newCar.getId(), newCar);
+
+        return "redirect:/cars/all";
+    }
+
+    @RequestMapping(value = "/changeavailability/{id}", method = RequestMethod.POST)
+    public String changeAvailability(@PathVariable(name = "id") long carId) throws ResourceNotFoundException {
+        carsService.changeCarsAvailability(carId);
 
         return "redirect:/cars/all";
     }

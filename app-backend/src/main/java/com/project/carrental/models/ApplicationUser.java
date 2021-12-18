@@ -1,9 +1,6 @@
 package com.project.carrental.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,26 +25,22 @@ public class ApplicationUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //@NotEmpty
-    //@Size(min = 1, max = 100)
+    @NonNull
     private String firstName;
 
-    //@NotEmpty
-    //@Size(min = 1, max = 100)
+    @NonNull
     private String lastName;
 
-    //@NotEmpty
-    //@Email
+    @NonNull
     private String email;
 
-    //@NotEmpty
-    //@Size(min = 1, max = 20)
+    @NonNull
     private String username;
 
-    //@NotEmpty
-    //@Size(min = 8, max = 100)
+    @NonNull
     private String password;
 
+    @NonNull
     private String role;
 
     @OneToOne(cascade = CascadeType.ALL)

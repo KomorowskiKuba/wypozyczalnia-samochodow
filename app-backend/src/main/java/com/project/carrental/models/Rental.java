@@ -1,10 +1,6 @@
 package com.project.carrental.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -18,21 +14,24 @@ import java.util.Date;
 public class Rental {
 
     @Id
+    @NonNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NonNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date rentalBeginningDate;
 
+    @NonNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date rentalEndDate;
 
-    //private Location pickUpLocation;
-
+    @NonNull
     @ManyToOne
     @JoinColumn(name = "applicationUser_id")
     private ApplicationUser applicationUser;
 
+    @NonNull
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Car car;

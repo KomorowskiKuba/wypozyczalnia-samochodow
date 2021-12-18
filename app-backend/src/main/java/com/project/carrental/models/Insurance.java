@@ -1,9 +1,6 @@
 package com.project.carrental.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -19,10 +16,13 @@ public class Insurance {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NonNull
     private String insuranceCode;
 
+    @NonNull
     private String insuranceName;
 
+    @NonNull
     private Double costPerDay;
 
     @OneToOne(mappedBy = "insurance", fetch = FetchType.EAGER)

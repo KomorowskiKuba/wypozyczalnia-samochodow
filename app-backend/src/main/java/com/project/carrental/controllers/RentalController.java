@@ -44,41 +44,41 @@ public class RentalController {
     }
 
     @GetMapping("/rental/new/{id}")
-    public String getCreateRentalForm(Model model, @PathVariable(name = "id") Long id) {
+    public String getCreateRentalForm(@PathVariable(name = "id") Long id, Model model) {
         Rental rental = new Rental();
-//
-        /*HttpHeaders headers = new HttpHeaders();
-        headers.setBasicAuth("user", "pass");
 
-        RestTemplate restTemplate = new RestTemplate();
-        HttpEntity request = new HttpEntity(headers);
 
-        ResponseEntity<Car> response = new RestTemplate().exchange("http://localhost:8080/cars/car/" + id, HttpMethod.GET, request, Car.class);
-
-        System.out.println(response.getBody().getModel());*/
-//
         model.addAttribute("rental", rental);
+        model.addAttribute("id", id.intValue());
 
         return "user/rental-page";
     }
 
-    @RequestMapping(value = "/rental/new", method = RequestMethod.POST)
-    public String createRental(Rental rental) {
+    @RequestMapping(value = "/rental/new/{id}", method = RequestMethod.POST)
+    public String createRental(@PathVariable(name = "id") Long id, Rental rental) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ApplicationUser user = (ApplicationUser)principal;
 
-        rental.setApplicationUser(user);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBasicAuth("user", "pass");
+        HttpEntity request = new HttpEntity(headers);
+
+        ResponseEntity<Car> response = new RestTemplate().exchange("http://localhost:8080/cars/car/" + id, HttpMethod.GET, request, Car.class);
+        System.out.println(response.getBody().getModel());
+
+        //System.out.println(car.getModel() + " " + car.getId());
+
+        //ental.setApplicationUser(user);
+        //rental.setCar(car);
+
+        //HttpHeaders headers = new HttpHeaders();
+        //headers.setBasicAuth("user", "pass");
+        //HttpEntity request = new HttpEntity(headers);
+
+        //ResponseEntity<Car> response = new RestTemplate().exchange("http://localhost:8080/cars/changeavailability/" + car.getId(), HttpMethod.POST, request, Car.class);
 
         rentalService.createRental(rental);
-/*
-        Gson gson = new Gson();
-        RestTemplate restTemplate = new RestTemplate();
-        var headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> request = new HttpEntity<String>(gson.toJson(), headers);
-        restTemplate.postForObject("http://localhost:8080/cars/edit/", request, String.class);
-*/
-//      carsService.changeCarsAvailability(rental.getCar().getId(), true);
+
         return "redirect:/cars/all";
     }
 }

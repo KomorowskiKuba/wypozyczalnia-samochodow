@@ -48,7 +48,7 @@ public class CarsService {
         car.setType(newCar.getType());
         car.setEngineCapacity(newCar.getEngineCapacity());
         car.setPricePerHour(newCar.getPricePerHour());
-        car.setPricePerDay(newCar.getPricePerDay()); //TODO: Change this
+        car.setPricePerDay(newCar.getPricePerDay());
 
         carsRepository.save(car);
 
@@ -60,9 +60,9 @@ public class CarsService {
         carsRepository.deleteById(carId);
     }
 
-    public void changeCarsAvailability(long carId, boolean isRented) {
-        Car car = carsRepository.findById(carId).orElseThrow(() -> new ResourceNotFoundException("Car not found:" + carId));
-        car.setRented(isRented);
+    public void changeCarsAvailability(long id) {
+        Car car = carsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Car not found:" + id));
+        car.setRented(!car.isRented());
 
         carsRepository.save(car);
     }
